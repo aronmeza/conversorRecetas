@@ -11,11 +11,11 @@
   <script type="text/javascript" src="${resource(contextPath:"",dir:'js/jquery',file:'jquery.ui.autocomplete.min.js')}"></script>
 </head>
 <body>
-  <div class="nav">
+  <!--div class="nav">
     <span class="menuButton"><a class="home" href="${resource(dir: '')}"><g:message code="inicio.home" /></a> </span>
     <span class="menuButton"><g:link class="salir" controller="receta" action='crear' ><g:message code="receta.crear" /></g:link></span>
     <span class="menuButton"><g:link class="salir" controller="logout" ><g:message code="inicio.salir" /></g:link></span>
-  </div>
+  </div-->
   <div class="body">
     <g:if test="${flash.message}">
       <div class="message">${flash.message}</div>
@@ -44,7 +44,7 @@
           <g:message code="receta.nombre" default="Nombre" />
           </td>
           <td>
-          <g:message code="receta.porciones" default="Porciones" />
+          <g:message code="receta.cantidad" default="Cantidad" />
           </td>
           <td>
           <g:message code="receta.procedimiento" default="Procedimiento" />
@@ -56,7 +56,7 @@
             <tr>
               <td valign="top" align="left" class="value">${i.materia.nombre}</td>
               <td valign="top" align="left" class="value">${i.cantidad}</td>
-              <td valign="top" align="left" class="value">${i.materia.unidadMedida}</td>              
+              <td valign="top" align="left" class="value">${i.unidadMedida}</td>              
               <td valign="top" align="left" class="value"><g:link controller="ingrediente" action="eliminar" id="${i.id}"><g:message code="ingrediente.eliminar" default="Eliminar" /></g:link></td>
             </tr>
           </g:each>

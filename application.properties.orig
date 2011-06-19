@@ -1,0 +1,14 @@
+#Grails Metadata file
+<<<<<<< HEAD
+#Sat Jun 18 22:27:14 CDT 2011
+=======
+#Tue May 31 11:09:20 CDT 2011
+>>>>>>> eder/master
+app.grails.version=1.3.7
+app.name=sistemaConversor
+app.servlet.version=2.4
+app.version=0.1
+plugins.hibernate=1.3.7
+plugins.jquery=1.4.2.2
+plugins.spring-security-core=1.1.1
+plugins.tomcat=1.3.7
