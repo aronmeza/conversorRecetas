@@ -21,7 +21,12 @@ class UsuarioController {
     }
 
     def crear = {
+<<<<<<< HEAD
+        
+        log.debug "Crear"
+=======
         log.debug "Crear $params"
+>>>>>>> eder/master
         def usuario = new Usuario()
         usuario.properties = params
         log.debug "usuario $usuario"
@@ -29,12 +34,16 @@ class UsuarioController {
     }
 
     def guardar = {
+<<<<<<< HEAD
         def rolSuper=Rol.findAllByAuthority('ROLE_SUPER')?:new Rol(authority:'ROLE_SUPER').save(failOnError: true)
         def rolAdmin=Rol.findAllByAuthority('ROLE_ADMIN')?:new Rol(authority:'ROLE_ADMIN').save(failOnError: true)
         def rolUsuario=Rol.findAllByAuthority('ROLE_USER')?:new Rol(authority:'ROLE_USER').save(failOnError: true)
         def rolCocinero=Rol.findAllByAuthority('ROLE_COCINERO')?:new Rol(authority:'ROLE_COCINERO').save(failOnError: true)
         
         log.debug "Guardar"
+=======
+        log.debug "Guardar $params"
+>>>>>>> eder/master
         def usuario = new Usuario(params)
         usuario.password=springSecurityService.encodePassword(usuario.password)
         usuario.accountExpired=false

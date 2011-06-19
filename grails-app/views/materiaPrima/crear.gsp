@@ -18,12 +18,12 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${materiaPrimaInstance}">
+            <g:hasErrors bean="${materia}">
             <div class="errors">
-                <g:renderErrors bean="${materiaPrimaInstance}" as="list" />
+                <g:renderErrors bean="${materia}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" >
+            <g:form action="guardar" >
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -32,8 +32,8 @@
                                 <td valign="top" class="name">
                                     <label for="nombre"><g:message code="materiaPrima.nombre.label" default="Nombre" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: materiaPrimaInstance, field: 'nombre', 'errors')}">
-                                    <g:textField name="nombre" maxlength="64" value="${materiaPrimaInstance?.nombre}" />
+                                <td valign="top" class="value ${hasErrors(bean: materia, field: 'nombre', 'errors')}">
+                                    <g:textField name="nombre" maxlength="64" value="${materia?.nombre}" />
                                 </td>
                             </tr>
                         
@@ -41,8 +41,8 @@
                                 <td valign="top" class="name">
                                     <label for="unidadMedida"><g:message code="materiaPrima.unidadMedida.label" default="Unidad Medida" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: materiaPrimaInstance, field: 'unidadMedida', 'errors')}">
-                                    <g:select name="unidadMedida" from="${materiaPrimaInstance.constraints.unidadMedida.inList}" value="${materiaPrimaInstance?.unidadMedida}" valueMessagePrefix="materiaPrima.unidadMedida"  />
+                                <td valign="top" class="value ${hasErrors(bean: materia, field: 'unidadMedida', 'errors')}">
+                                    <g:select name="unidadMedida" from="${materia.constraints.unidadMedida.inList}" value="${materia?.unidadMedida}" valueMessagePrefix="materiaPrima.unidadMedida"  />
                                 </td>
                             </tr>
                         
