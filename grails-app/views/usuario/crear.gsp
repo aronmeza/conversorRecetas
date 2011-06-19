@@ -69,7 +69,21 @@
             <td valign="top" class="value ${hasErrors(bean: usuario, field: 'apMaterno', 'errors')}">
           <g:textField name="apMaterno" value="${usuario?.apMaterno}" />
           </td>
+          </tr >
+          <td valign="top" class="name">
+            <label for="usuarioRol"><g:message code="usuario.usuarioRol" default="Usuario Rol" /></label>
+          </td>
+          <td><select id="unittype" name="unittype">
+  <option value="rolSuper" selected> Super Administrador </option>
+  <option value="rolAdmin"> Administrador </option>
+  <option value="rolUsuario" > Usuario </option>
+  <option value="rolCocinero" > Usuario </option>
+ </select></td>
+          <tr>
+
           </tr>
+
+
           </tbody>
         </table>
       </div>

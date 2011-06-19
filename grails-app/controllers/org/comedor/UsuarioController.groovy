@@ -21,6 +21,7 @@ class UsuarioController {
     }
 
     def crear = {
+        
         log.debug "Crear"
         def usuario = new Usuario()
         usuario.properties = params
@@ -28,6 +29,11 @@ class UsuarioController {
     }
 
     def guardar = {
+        def rolSuper=Rol.findAllByAuthority('ROLE_SUPER')?:new Rol(authority:'ROLE_SUPER').save(failOnError: true)
+        def rolAdmin=Rol.findAllByAuthority('ROLE_ADMIN')?:new Rol(authority:'ROLE_ADMIN').save(failOnError: true)
+        def rolUsuario=Rol.findAllByAuthority('ROLE_USER')?:new Rol(authority:'ROLE_USER').save(failOnError: true)
+        def rolCocinero=Rol.findAllByAuthority('ROLE_COCINERO')?:new Rol(authority:'ROLE_COCINERO').save(failOnError: true)
+        
         log.debug "Guardar"
         def usuario = new Usuario(params)
         usuario.password=springSecurityService.encodePassword(usuario.password)
@@ -36,9 +42,23 @@ class UsuarioController {
         usuario.enabled=true
         usuario.passwordExpired=false
         if (usuario.save(flush: true)) {
+             if(!superAdmin.authorities.contains(rolSuper) ){
+                    UsuarioRol.create(superAdmin,rolSuper)
+                }
+                if(!userAdmin.authorities.contains(rolAdmin) ){
+                    UsuarioRol.create(userAdmin,rolAdmin)
+                }
+                if(!userUser.authorities.contains(rolUsuario) ){
+                    UsuarioRol.create(userUser,rolUsuario)
+                }
+                if(!userCocinero.authorities.contains(rolCocinero) ){
+                    UsuarioRol.create(userCocinero,rolCocinero)
+                }
+
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuario.id])}"
             redirect(action: "ver", id: usuario.id)
         }
+        
         else {
             render(view: "crear", model: [usuario: usuario])
         }
